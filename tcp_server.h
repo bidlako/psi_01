@@ -22,7 +22,7 @@ typedef struct {
 int init_server(const ServerConfig *config);
 
 /* Start the server to listen and accept client connections */
-_Noreturn int start_server(int server_fd);
+int start_server(int server_fd);
 
 /* Handle an individual client connection */
 void *handle_client(void *client);
