@@ -1,14 +1,11 @@
 # TCP Echo Server
 
-A basic multithreaded TCP echo server written in C. For each client connection, the server spawns a new thread to handle
-the client's request. The server reads lines from the client and sends back a response in the format: "You wrote {client
-message}".
+A basic multithreaded TCP echo server written in C. For each client connection, the server spawns a new thread to handle the client's request. The server reads lines from the client and sends back a response in the format: "You wrote {client message}".
 
 ## Building and Running
 
 ### Prerequisites
 
-- CMake (minimum version 3.10)
 - GCC or another C compiler
 
 ### Building
@@ -20,30 +17,40 @@ git clone https://github.com/bidlako/psi_01.git
 cd psi_01
 ```
 
-2. Create a build directory and navigate to it:
+2. Build the project using Make:
 
 ```bash
-mkdir build
-cd build
-```
-
-3. Run CMake to configure the project and make to build:
-
-```bash
-cmake ..
 make
 ```
 
-4. You'll find the server binary in the build directory.
+This command will create a `build` directory and place all build artifacts (object files and executable) in it.
 
 ### Running
 
-Execute the server binary with the desired port:
+You can run the server in two ways:
+
+1. Directly execute the server binary with the desired port:
+
+   ```bash
+   ./build/psi_01 <port>
+   ```
+
+   Replace `<port>` with the desired port number, e.g., `8080`.
+
+2. Alternatively, use the Makefile's `run` target to start the server:
+
+   ```bash
+   make run PORT="<port>"
+   ```
+
+   This command also runs the executable located in the `build` directory.
+
+### Cleaning the Build
+
+To clean up the build artifacts, simply run:
 
 ```bash
-./tcp_echo_server <port>
+make clean
 ```
 
-Replace `<port>` with the desired port number, e.g., `8080`.
-
-
+This command will remove the `build` directory and all its contents.
